@@ -1,6 +1,10 @@
 import './App.css';
 import React, { useState} from 'react';
-import LittleLemons from './components/examples/LittleLemons';
+import MealsProvider from './providers/MealsProvider';
+import MealsList from './components/examples/MealsList';
+import Counter from './components/examples/Counter';
+
+// import LittleLemons from './components/examples/LittleLemons';
 // import InputComponent from './components/examples/InputComponent';
 // import Child from "./components/examples/Child"
 // import Nav from './components/Nav.js';
@@ -9,25 +13,37 @@ import LittleLemons from './components/examples/LittleLemons';
 // import Btn from './components/examples/btn';
 // import ModeToggler from './components/examples/ModeToggler';
 
-
-
 function App() {
-  
-const [word, setWord] = useState('Eat')
-
-function handleClick() {
-  word === 'Eat' ? setWord('Drink') : setWord('Eat')
-}
   return (
-    <div>      
-      <LittleLemons message={word + " at Sweet Lemons"} />
-      <button onClick={handleClick}>Click Here</button>
+    <div>
+      <MealsProvider>
+        <MealsList />
+        <Counter />
+
+      </MealsProvider>
     </div>
   );
 }
 
 
 export default App;
+
+
+
+// function App() {
+  
+// const [word, setWord] = useState('Eat')
+
+// function handleClick() {
+//   word === 'Eat' ? setWord('Drink') : setWord('Eat')
+// }
+//   return (
+//     <div>      
+//       <LittleLemons message={word + " at Sweet Lemons"} />
+//       <button onClick={handleClick}>Click Here</button>
+//     </div>
+//   );
+// }
 
 
 
