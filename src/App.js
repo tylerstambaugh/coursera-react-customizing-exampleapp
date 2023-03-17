@@ -1,37 +1,24 @@
 import './App.css';
 import React, { useState} from 'react';
-import { useReducer } from 'react';
-
-const reducer = (state, action) => {
-  if (action.type === 'ride') return {money: state.money + 10};
-  if (action.type === 'fuel') return {money: state.money - 50};
-  return new Error();
-}
+import Fruits from './components/examples/Fruits';
+import FruitsCounter from './components/examples/FruitCounter';
 
 function App() {
 
-  const initialState = {money: 100};
-  const [state, dispatch] = useReducer(reducer, initialState);
-
-  return (
+const [fruits] = React.useState([
+  {fruitName: 'apple', id: 1},
+  {fruitName: 'apple', id: 2},
+  {fruitName: 'plum', id: 3},
+]);
+  return (    
+    
     <div className="App">
-      <h1>Wallet: {state.money}</h1>
-      <div>
-        <button onClick={() => dispatch({type: 'ride'})}>
-          A new customer!
-        </button>
-        <button onClick={() => dispatch({type: 'fuel'})}>
-          Refill the tank!
-        </button>
-      </div>
-
-
+      <h1>Where should the state go?</h1>
+      <Fruits fruits={fruits}/>
+      <FruitsCounter fruits={fruits}/>
     </div>
-
   );
 }
-
-
 
 export default App;
 
@@ -48,6 +35,40 @@ export default App;
 // import Btn from './components/examples/btn';
 // import ModeToggler from './components/examples/ModeToggler';
 
+
+// ----------------------------------
+
+// const reducer = (state, action) => {
+//   if (action.type === 'ride') return {money: state.money + 10};
+//   if (action.type === 'fuel') return {money: state.money - 50};
+//   return new Error();
+// }
+
+// function App() {
+
+//   const initialState = {money: 100};
+//   const [state, dispatch] = useReducer(reducer, initialState);
+
+//   return (
+//     <div className="App">
+//       <h1>Wallet: {state.money}</h1>
+//       <div>
+//         <button onClick={() => dispatch({type: 'ride'})}>
+//           A new customer!
+//         </button>
+//         <button onClick={() => dispatch({type: 'fuel'})}>
+//           Refill the tank!
+//         </button>
+//       </div>
+
+
+//     </div>
+
+//   );
+// }
+
+//--------------------------------------
+
 // function App() {
 //   return (
 //     <div>
@@ -60,7 +81,7 @@ export default App;
 //   );
 // }
 
-
+//-------------------------------------
 // function App() {
   
 // const [word, setWord] = useState('Eat')
@@ -77,7 +98,7 @@ export default App;
 // }
 
 
-
+//------------------------------------------
 // function App() {
 //   return (
 //     <ModeToggler />
